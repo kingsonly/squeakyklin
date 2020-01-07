@@ -1,0 +1,7 @@
+{
+  "name": "squeakyklin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

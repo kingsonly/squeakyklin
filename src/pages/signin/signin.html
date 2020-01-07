@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <img src="assets/imgs/logo.png" class="logo">
+    <h3 text-center>Sign in now</h3>
+    <form (ngSubmit)="login()" #registerForm="ngForm">
+        <ion-list no-lines class="form">
+            <ion-item>
+                <ion-icon name="md-mail" item-start></ion-icon>
+                <ion-label floating>Email or Phone Number</ion-label>
+                <ion-input type="text" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-lock" item-start></ion-icon>
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                <h5 item-end (click)="password()">Forgot ?</h5>
+            </ion-item>
+        </ion-list>
+        <button ion-button block type="submit" [disabled]="!registerForm.form.valid">Sign in</button>
+        <p text-center>Oh! Not Registered yet?</p>
+        <button ion-button outline block (click)="signup()">Register Now</button>
+    </form>
+</ion-content>

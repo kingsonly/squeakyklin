@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title><strong>Quick</strong>Wash</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-light">
+    <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides">
+            <img [src]="slide.image" class="slide-image" />
+            <div class="banner-text">
+                <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+                <button ion-button outline item-end icon-end clear small>
+                  View all offiers
+                  <ion-icon name="md-arrow-forward"></ion-icon>
+                </button>
+            </div>
+        </ion-slide>
+    </ion-slides>
+    <p padding-left padding-right class="heading">Services</p>
+    <ion-card *ngFor="let service of plan" (click)="selectplan(service.id)">
+      <img [src]="logo(service.logo)" />
+      <div class="card-title">{{service.plan_name}}</div>
+      <div class="card-subtitle">#{{service.price}}</div>
+    </ion-card>
+
+
+</ion-content>

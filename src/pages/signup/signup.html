@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Register now</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list no-lines class="form">
+        <form [formGroup]="changePasswordForm" (submit)="register()">
+            <ion-item>
+                <ion-icon name="md-person" item-start></ion-icon>
+                <ion-label floating>Enter Username <span class="errors" *ngIf="!changePasswordForm.controls.username.valid && !changePasswordForm.controls.username.pending && (changePasswordForm.controls.username.dirty || submitAttempt)">Sorry, that username can not be used!</span></ion-label>
+                <ion-input formControlName="username" type="text" [class.invalid]="!changePasswordForm.controls.username.valid && (changePasswordForm.controls.username.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-mail" item-start></ion-icon>
+                <ion-label floating>Email Address <span class="errors" *ngIf="!changePasswordForm.controls.email.valid && !changePasswordForm.controls.email.pending && (changePasswordForm.controls.email.dirty || submitAttempt)">Sorry, that email can not be used!</span></ion-label>
+                <ion-input formControlName="email" type="email" [class.invalid]="!changePasswordForm.controls.email.valid && (changePasswordForm.controls.email.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-phone-portrait" item-start></ion-icon>
+                <ion-label floating>Phone Number <span class="errors" *ngIf="!changePasswordForm.controls.phonenumber.valid && !changePasswordForm.controls.phonenumber.pending && (changePasswordForm.controls.phonenumber.dirty || submitAttempt)">Sorry, that phonenumber can not be used!</span></ion-label>
+                <ion-input formControlName="phonenumber" type="number" [class.invalid]="!changePasswordForm.controls.phonenumber.valid && (changePasswordForm.controls.phonenumber.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+            <label class="radio-inline">
+                <input type="radio" value="no" formControlName="haveref"> I was not reffered
+            </label>
+
+            <label class="radio-inline">
+
+                <input type="radio" value="yes" formControlName="haveref"> I was reffered
+            </label>
+            </ion-item>
+
+            <ion-item *ngIf="changePasswordForm.controls.haveref.value == 'no'">
+                <ion-icon name="md-person" item-start></ion-icon>
+                <ion-label floating>Ref Username </ion-label>
+                <ion-input  type="text" [disabled]="true"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="changePasswordForm.controls.haveref.value == 'yes'">
+                <ion-icon name="md-person" item-start></ion-icon>
+                <ion-label floating>Ref Username </ion-label>
+                <ion-input formControlName="ref" type="text" [disabled]="false"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="md-lock" item-start></ion-icon>
+                <ion-label floating>Password <span class="errors" *ngIf="!changePasswordForm.controls.password.valid && !changePasswordForm.controls.password.pending && (changePasswordForm.controls.password.dirty || submitAttempt)">Sorry, password must be greater than six characters</span></ion-label>
+                <ion-input formControlName="password" type="password" [class.invalid]="!changePasswordForm.controls.password.valid && (changePasswordForm.controls.password.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="md-lock" item-start></ion-icon>
+                <ion-label floating>Confirm Password <ion-note *ngIf="changePasswordForm.controls['confirmPassword'].errors?.MatchPassword" style="color: red;font-size:9px">
+        			(New password and Confirm password did not match)
+                </ion-note></ion-label>
+
+                <ion-input formControlName="confirmPassword" id="confirmPassword" type="password" [class.invalid]="!changePasswordForm.controls.confirmPassword.valid && (changePasswordForm.controls.confirmPassword.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+            <button ion-button block *ngIf="!changingPassword" [disabled]="!changePasswordForm.valid" type="submit" >Submit</button>
+            <button *ngIf="changingPassword" color="primary" disabled ion-button block>
+          <div class="center-vertical-horizontal">
+            Processing...
+            <ion-spinner class="button-spinner" name="crescent"></ion-spinner>
+          </div>
+        </button>
+    	</form>
+    </ion-list>
+
+</ion-content>
