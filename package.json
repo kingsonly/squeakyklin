@@ -61,9 +61,6 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "com.mrfoh.paystackcordova.v2": {
-        "PUBLIC_KEY": "pk_test_91f3346ac1b0389bee1fd078627538f921edc493"
-      },
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-advanced-http": {
         "OKHTTP_VERSION": "3.10.0"
